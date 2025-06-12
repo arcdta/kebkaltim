@@ -44,7 +44,7 @@
       })
     };
 
-    fetch('FIX.geojson')
+    fetch('fix.geojson')
       .then(response => response.json())
       .then(data => {
         L.geoJSON(data, {
