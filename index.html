@@ -395,32 +395,13 @@
             layerName: 'layer_fixFIX_3',
             pane: 'pane_fixFIX_3',
             onEachFeature: pop_fixFIX_3,
-            
-pointToLayer: function (feature, latlng) {
-    var komoditas = feature.properties['KOMODITAS'].toLowerCase().trim();
-    var iconUrl = 'images/default.png';
-
-    if (komoditas.includes('sawit')) {
-        iconUrl = 'images/kelapa_sawit.png';
-    } else if (komoditas === 'kelapa') {
-        iconUrl = 'images/kelapa.png';
-    } else if (komoditas === 'kopi') {
-        iconUrl = 'images/kopi.png';
-    } else if (komoditas === 'karet') {
-        iconUrl = 'images/karet.png';
-    } else if (komoditas === 'kakao') {
-        iconUrl = 'images/kakao.png';
-    }
-
-    var icon = L.icon({
-        iconUrl: iconUrl,
-        iconSize: [32, 32],
-        iconAnchor: [16, 32],
-        popupAnchor: [0, -32]
-    });
-    return L.marker(latlng, { icon: icon });
-}
-,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_fixFIX_3_0(feature));
+            },
         });
         bounds_group.addLayer(layer_fixFIX_3);
         map.addLayer(layer_fixFIX_3);
